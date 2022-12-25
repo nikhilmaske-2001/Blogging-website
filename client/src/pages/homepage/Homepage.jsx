@@ -10,7 +10,7 @@ export default function Homepage() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("http://localhost:5000/api/posts");
+      const res = await axios.get("/posts");
       setPosts(res.data);
     };
     fetchPosts();
