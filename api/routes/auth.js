@@ -28,10 +28,11 @@ router.post("/login", async (req, res) => {
         !user && res.status(400).json("Wrong credentials");
 
         const validated = await bcrypt.compare(req.body.password, user.password);
-
+        // if the INPUT password does not match with the decrypted password, we can't login
         !validated && res.status(400).json("Wrong credentials");
 
-        res.status(200).json(user);
+        const { password, ...others } = user;
+        res.status(200).json(others);
     } catch (error) {
         res.status(500).json(error);
     }
