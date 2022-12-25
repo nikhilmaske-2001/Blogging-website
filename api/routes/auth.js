@@ -31,7 +31,7 @@ router.post("/login", async (req, res) => {
         // if the INPUT password does not match with the decrypted password, we can't login
         !validated && res.status(400).json("Wrong credentials");
 
-        const { password, ...others } = user;
+        const { password, ...others } = user._doc;
         res.status(200).json(others);
     } catch (error) {
         res.status(500).json(error);
