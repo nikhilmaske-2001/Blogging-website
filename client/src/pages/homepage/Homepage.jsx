@@ -11,7 +11,7 @@ export default function Homepage() {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("http://localhost:5000/api/posts");
-      console.log(res);
+      setPosts(res.data);
     };
     fetchPosts();
   }, []);
@@ -20,7 +20,7 @@ export default function Homepage() {
     <>
       <Header />
       <div className="home">
-        <Posts />
+        <Posts posts={posts} />
         <Sidebar />
       </div>
     </>
